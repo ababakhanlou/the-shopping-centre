@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
@@ -11,11 +11,7 @@ const StyledBasketCount = styled.i`
 `;
 
 function Basket() {
-  const basketStore = useSelector((state) => state.basket);
-  const [basket, setBasket] = useState([]);
-  useEffect(() => {
-    setBasket(basketStore);
-  }, [basketStore]);
+  const basket = useSelector((state) => state.basket);
 
   return (
     <StyledBasket>
