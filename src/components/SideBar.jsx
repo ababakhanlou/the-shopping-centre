@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCategory } from "../actions/category";
 import styled from "styled-components";
 
 const StyledSideBar = styled.div`
@@ -9,24 +10,37 @@ const StyledSideBar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: orange;
+  background-color: blue;
   margin-bottom: 10px;
   text-align: center;
 `;
 
-class SideBar extends React.Component {
-  render() {
-    return (
-      <StyledSideBar>
-        <button>page 1</button>
-        <button>page 2</button>
-        <button>page 3</button>
-        <button>page 4</button>
-        <button>page 5</button>
-        <button>page 6</button>
-      </StyledSideBar>
-    );
-  }
+const StyledButton = styled.button`
+  height: 70px;
+  width: 180px;
+`;
+
+function SideBar() {
+  const dispatch = useDispatch();
+  const chooseCategory = (payload) => {
+    dispatch(setCategory(payload));
+  };
+
+  return (
+    <StyledSideBar>
+      <StyledButton onClick={() => chooseCategory("Home")}>Home</StyledButton>
+
+      <StyledButton onClick={() => chooseCategory("PlayStation")}>
+        PlayStation
+      </StyledButton>
+
+      <StyledButton onClick={() => chooseCategory("XBox")}>XBox</StyledButton>
+
+      <StyledButton onClick={() => chooseCategory("Nintendo")}>
+        Nintendo
+      </StyledButton>
+    </StyledSideBar>
+  );
 }
 
 export default SideBar;
