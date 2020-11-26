@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Basket from "./Basket";
 import styled from "styled-components";

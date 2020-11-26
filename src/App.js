@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
 import WelcomeTile from "./components/WelcomeTile";
 import inventory from "./services/inventory";
 import ProductTile from "./components/ProductTile";
+import Checkout from "./components/Checkout";
 
 const StyledMainBody = styled.div`
   display: flex;
@@ -29,22 +31,30 @@ function App() {
   }, [category]);
 
   return (
-    <div>
-      <TopBar />
-      <StyledMainBody>
-        <SideBar />
-
-        {!filteredStock.length ? (
-          <WelcomeTile />
-        ) : (
-          <StyledItems>
-            {filteredStock.map((item, index) => (
-              <ProductTile product={item} key={index} />
-            ))}
-          </StyledItems>
-        )}
-      </StyledMainBody>
-    </div>
+    <Router>
+      <div>
+        <TopBar />
+        <StyledMainBody>
+          <SideBar />
+          <Switch>
+            <Route exact path="/">
+              {!filteredStock.length ? (
+                <WelcomeTile />
+              ) : (
+                <StyledItems>
+                  {filteredStock.map((item, index) => (
+                    <ProductTile product={item} key={index} />
+                  ))}
+                </StyledItems>
+              )}
+            </Route>
+            <Route path="/checkout">
+              <Checkout />
+            </Route>
+          </Switch>
+        </StyledMainBody>
+      </div>
+    </Router>
   );
 }
 

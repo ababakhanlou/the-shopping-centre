@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setCategory } from "../actions/category";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const StyledSideBar = styled.div`
   padding: 5px;
@@ -26,17 +27,26 @@ function SideBar() {
     dispatch(setCategory(payload));
   };
 
+  let history = useHistory();
+
+  const changeLink = (page) => {
+    chooseCategory(page);
+    if (history.location.pathname === "/checkout") {
+      history.push("/");
+    }
+  };
+
   return (
     <StyledSideBar>
-      <StyledButton onClick={() => chooseCategory("Home")}>Home</StyledButton>
+      <StyledButton onClick={() => changeLink("Home")}>Home</StyledButton>
 
-      <StyledButton onClick={() => chooseCategory("PlayStation")}>
+      <StyledButton onClick={() => changeLink("PlayStation")}>
         PlayStation
       </StyledButton>
 
-      <StyledButton onClick={() => chooseCategory("XBox")}>XBox</StyledButton>
+      <StyledButton onClick={() => changeLink("XBox")}>XBox</StyledButton>
 
-      <StyledButton onClick={() => chooseCategory("Nintendo")}>
+      <StyledButton onClick={() => changeLink("Nintendo")}>
         Nintendo
       </StyledButton>
     </StyledSideBar>
