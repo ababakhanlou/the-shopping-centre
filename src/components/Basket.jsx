@@ -21,13 +21,16 @@ const StyledLink = styled(Link)`
 function Basket() {
   const basket = useSelector((state) => state.basket);
 
+  var basketCount = 0;
+  if (basket.length > 0) {
+    basket.map((item) => (basketCount = basketCount + item.qty));
+  }
+
   return (
     <StyledLink to="/checkout">
       <StyledBasket>
         <i className="fas fa-shopping-cart fa-2x"></i>
-        {basket.length > 0 && (
-          <StyledBasketCount>{basket.length} </StyledBasketCount>
-        )}
+        <StyledBasketCount>{basketCount}</StyledBasketCount>
       </StyledBasket>
     </StyledLink>
   );
