@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCategory } from "../actions/category";
 import styled from "styled-components";
@@ -21,13 +21,23 @@ const StyledButton = styled.button`
   width: 180px;
 `;
 
+const StyledSearch = styled.form`
+  padding-top: 15px;
+`;
+
 function SideBar() {
+  const [searchItem, setSearchItem] = useState("");
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (!!searchItem) changeLink(searchItem);
+  };
+
   const dispatch = useDispatch();
   const chooseCategory = (payload) => {
     dispatch(setCategory(payload));
   };
 
-  let history = useHistory();
+  const history = useHistory();
 
   const changeLink = (page) => {
     chooseCategory(page);
@@ -49,6 +59,15 @@ function SideBar() {
       <StyledButton onClick={() => changeLink("Nintendo")}>
         Nintendo
       </StyledButton>
+
+      <StyledSearch onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={searchItem}
+          onChange={(e) => setSearchItem(e.target.value)}
+        />
+        <input type="submit" value="Search" />
+      </StyledSearch>
     </StyledSideBar>
   );
 }

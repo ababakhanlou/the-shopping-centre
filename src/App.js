@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
 import WelcomeTile from "./components/WelcomeTile";
-import inventory from "./services/inventory";
+import { getItemByBrand, getItemBySearch } from "./services/inventory";
 import ProductTile from "./components/ProductTile";
 import Checkout from "./components/Checkout";
 
@@ -23,11 +23,16 @@ const StyledItems = styled.div`
 `;
 
 function App() {
+  const baseCategories = ["Home", "XBox", "PlayStation", "Nintendo"];
   const category = useSelector((state) => state.selectedCategory);
 
   const [filteredStock, setFilteredStock] = useState([]);
   useEffect(() => {
-    setFilteredStock(inventory(category));
+    if (baseCategories.includes(category)) {
+      setFilteredStock(getItemByBrand(category));
+    } else {
+      setFilteredStock(getItemBySearch(category));
+    }
   }, [category]);
 
   return (
