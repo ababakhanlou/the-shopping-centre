@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addToBasket as addToBasketAction } from "../actions/category";
+import { addToBasket as addToBasketAction } from "../actions/checkout";
 import styled from "styled-components";
 
 const StyledTile = styled.div`
@@ -9,16 +9,23 @@ const StyledTile = styled.div`
   width: 180px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: red;
-  margin-bottom: 10px;
-  margin-right: 5px;
   text-align: center;
+  background-color: #691391;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+  justify-content: center;
 `;
 
-const StyledUl = styled.ul`
-  display: flex;
-  flex-direction: column;
+const StyledButton = styled.button`
+  background-color: #5a025a;
+  color: white;
+  font-weight: 900;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 15px;
 `;
 
 function ProductTile({ product }) {
@@ -29,15 +36,13 @@ function ProductTile({ product }) {
 
   return (
     <StyledTile>
-      <StyledUl>
-        <li>{product.brand}</li>
-        <li>{product.item}</li>
-        <li>{product.model}</li>
-        <li>{product.price}</li>
-      </StyledUl>
-      <button onClick={() => addToBasket(product.displayName, product.price)}>
+      <div>{product.displayName}</div>
+      <div>£{product.price}</div>
+      <StyledButton
+        onClick={() => addToBasket(product.displayName, product.price)}
+      >
         Add to Basket
-      </button>
+      </StyledButton>
     </StyledTile>
   );
 }

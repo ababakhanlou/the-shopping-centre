@@ -1,28 +1,54 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCategory } from "../actions/category";
+import { setCategory } from "../actions/checkout";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { categories } from "../constants";
 
 const StyledSideBar = styled.div`
-  padding: 5px;
   height: 800px;
   width: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: blue;
   margin-bottom: 10px;
   text-align: center;
+  padding-right: 10px;
 `;
 
 const StyledButton = styled.button`
   height: 70px;
   width: 180px;
+  background-color: #691391;
+  color: white;
+  font-weight: 900;
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 10px;
 `;
 
 const StyledSearch = styled.form`
   padding-top: 15px;
+`;
+
+const StyledInput = styled.input`
+  background-color: #691391;
+  color: white;
+  border-radius: 10px;
+  font-weight: 900;
+  border: none;
+  padding: 10px;
+`;
+
+const StyledSubmit = styled.input`
+  margin-top: 5px;
+  background-color: #691391;
+  color: white;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  font-weight: 900;
+  border: none;
+  padding: 9px;
 `;
 
 function SideBar() {
@@ -48,25 +74,19 @@ function SideBar() {
 
   return (
     <StyledSideBar>
-      <StyledButton onClick={() => changeLink("Home")}>Home</StyledButton>
-
-      <StyledButton onClick={() => changeLink("PlayStation")}>
-        PlayStation
-      </StyledButton>
-
-      <StyledButton onClick={() => changeLink("XBox")}>XBox</StyledButton>
-
-      <StyledButton onClick={() => changeLink("Nintendo")}>
-        Nintendo
-      </StyledButton>
+      {Object.values(categories).map((category) => (
+        <StyledButton key={category} onClick={() => changeLink(category)}>
+          {category}
+        </StyledButton>
+      ))}
 
       <StyledSearch onSubmit={handleSubmit}>
-        <input
+        <StyledInput
           type="text"
           value={searchItem}
           onChange={(e) => setSearchItem(e.target.value)}
         />
-        <input type="submit" value="Search" />
+        <StyledSubmit type="submit" value="Search" />
       </StyledSearch>
     </StyledSideBar>
   );

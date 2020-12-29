@@ -15,10 +15,10 @@ const stock = [
   },
   {
     brand: "XBox",
-    model: "X",
+    model: "Series X",
     item: "Console",
     price: 500,
-    displayName: "XBox X Console",
+    displayName: "XBox Series X Console",
   },
   {
     brand: "Nintendo",
@@ -26,6 +26,13 @@ const stock = [
     item: "Console",
     price: 200,
     displayName: "Nintendo Switch Console",
+  },
+  {
+    brand: "Sega",
+    model: "DreamCast",
+    item: "Console",
+    price: 1000,
+    displayName: "Sega DreamCast Console",
   },
 ];
 

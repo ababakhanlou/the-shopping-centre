@@ -2,15 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledTile = styled.div`
-  padding-top: 70px;
-  height: 700px;
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: green;
+  padding-top: 20px;
+  margin-left: 50px;
   margin-bottom: 10px;
   text-align: center;
+  color: white;
+  width: 100%;
 `;
 
 function WelcomeTile() {

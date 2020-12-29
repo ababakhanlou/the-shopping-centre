@@ -3,7 +3,7 @@ import {
   REMOVE_FROM_BASKET,
   ADD_TO_BASKET,
   DEDUCT_FROM_BASKET,
-} from "../actions/category";
+} from "../actions/checkout";
 
 const initialState = {
   selectedCategory: "",

@@ -2,13 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { getBasketItemCount } from "../selector/checkout";
 
 const StyledBasket = styled.div``;
 
 const StyledBasketCount = styled.i`
   font-weight: bold;
   font-size: 20px;
-  color: red;
+  color: white;
 `;
 
 const StyledLink = styled(Link)`
@@ -19,12 +20,7 @@ const StyledLink = styled(Link)`
 `;
 
 function Basket() {
-  const basket = useSelector((state) => state.basket);
-
-  var basketCount = 0;
-  if (basket.length > 0) {
-    basket.map((item) => (basketCount = basketCount + item.qty));
-  }
+  const basketCount = useSelector(getBasketItemCount);
 
   return (
     <StyledLink to="/checkout">

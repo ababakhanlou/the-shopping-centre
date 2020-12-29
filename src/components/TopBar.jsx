@@ -9,13 +9,13 @@ const StyledTopBar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: orange;
+  color: white;
 `;
 
 function TopBar() {
   return (
     <StyledTopBar>
-      <h1>Shopping Centre!¡!</h1>
+      <h1>The Shopping Centre</h1>
       <Basket />
     </StyledTopBar>
   );

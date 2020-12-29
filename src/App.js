@@ -8,6 +8,11 @@ import WelcomeTile from "./components/WelcomeTile";
 import { getItemByBrand, getItemBySearch } from "./services/inventory";
 import ProductTile from "./components/ProductTile";
 import Checkout from "./components/Checkout";
+import { categories } from "./constants";
+
+const StyledApp = styled.div`
+  background-color: #5a025a;
+`;
 
 const StyledMainBody = styled.div`
   display: flex;
@@ -16,14 +21,13 @@ const StyledMainBody = styled.div`
 
 const StyledItems = styled.div`
   display: flex;
-  flex-direction: column;
-  order: 5;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
   margin-left: 3px;
+  height: fit-content;
 `;
 
 function App() {
-  const baseCategories = ["Home", "XBox", "PlayStation", "Nintendo"];
+  const baseCategories = Object.values(categories);
   const category = useSelector((state) => state.selectedCategory);
 
   const [filteredStock, setFilteredStock] = useState([]);
@@ -37,7 +41,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <StyledApp>
         <TopBar />
         <StyledMainBody>
           <SideBar />
@@ -58,7 +62,7 @@ function App() {
             </Route>
           </Switch>
         </StyledMainBody>
-      </div>
+      </StyledApp>
     </Router>
   );
 }
