@@ -37,7 +37,8 @@ function App() {
     } else {
       setFilteredStock(getItemBySearch(category));
     }
-  }, [category, baseCategories]);
+    // eslint-disable-next-line
+  }, [category]);
 
   return (
     <Router>
