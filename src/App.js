@@ -37,7 +37,7 @@ function App() {
     } else {
       setFilteredStock(getItemBySearch(category));
     }
-  }, [category]);
+  }, [category, baseCategories]);
 
   return (
     <Router>
