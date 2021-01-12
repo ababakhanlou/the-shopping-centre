@@ -29,6 +29,7 @@ const StyledButton = styled.button`
 
 const StyledSearch = styled.form`
   padding-top: 15px;
+  align-self: start;
 `;
 
 const StyledInput = styled.input`
@@ -38,6 +39,7 @@ const StyledInput = styled.input`
   font-weight: 900;
   border: none;
   padding: 10px;
+  width: 150px;
 `;
 
 const StyledSubmit = styled.input`
