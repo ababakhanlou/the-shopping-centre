@@ -36,11 +36,11 @@ const stock = [
   },
 ];
 
-export function getItemByBrand(brand) {
+export function getItemByBrand(brand: string) {
   return stock.filter((item) => item.brand === brand);
 }
 
-export function getItemBySearch(displayName) {
+export function getItemBySearch(displayName: string) {
   return stock.filter((item) =>
     item.displayName.toLowerCase().includes(displayName.toLowerCase())
   );

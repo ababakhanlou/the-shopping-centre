@@ -1,4 +1,5 @@
 import { reducer } from "./checkout";
+import { State } from "../types";
 
 describe("reducer", () => {
   const initialState = {

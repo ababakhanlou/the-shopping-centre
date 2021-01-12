@@ -55,19 +55,19 @@ const StyledSubmit = styled.input`
 
 function SideBar() {
   const [searchItem, setSearchItem] = useState("");
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!!searchItem) changeLink(searchItem);
   };
 
   const dispatch = useDispatch();
-  const chooseCategory = (payload) => {
+  const chooseCategory = (payload: string) => {
     dispatch(setCategory(payload));
   };
 
   const history = useHistory();
 
-  const changeLink = (page) => {
+  const changeLink = (page: string) => {
     chooseCategory(page);
     if (history.location.pathname === "/checkout") {
       history.push("/");

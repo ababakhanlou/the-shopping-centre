@@ -7,6 +7,7 @@ import {
   deductFromBasket as deductFromBasketAction,
 } from "../actions/checkout";
 import { getBasketTotal } from "../selector/checkout";
+import { State } from "../types";
 import styled from "styled-components";
 
 const StyledCheckout = styled.div`
@@ -47,16 +48,16 @@ const StyledRemove = styled.button`
 `;
 
 function Checkout() {
-  const basket = useSelector((state) => state.basket);
+  const basket = useSelector((state: State) => state.basket);
 
   const dispatch = useDispatch();
-  const addToBasket = (item, price) => {
+  const addToBasket = (item: string, price: number) => {
     dispatch(addToBasketAction(item, price));
   };
-  const removeFromBasket = (item) => {
+  const removeFromBasket = (item: string) => {
     dispatch(removeFromBasketAction(item));
   };
-  const deductFromBasket = (item) => {
+  const deductFromBasket = (item: string) => {
     dispatch(deductFromBasketAction(item));
   };
 

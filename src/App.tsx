@@ -9,6 +9,7 @@ import { getItemByBrand, getItemBySearch } from "./services/inventory";
 import ProductTile from "./components/ProductTile";
 import Checkout from "./components/Checkout";
 import { categories } from "./constants";
+import {State, Stock} from "./types"
 
 const StyledApp = styled.div`
   background-color: #5a025a;
@@ -28,9 +29,9 @@ const StyledItems = styled.div`
 
 function App() {
   const baseCategories = Object.values(categories);
-  const category = useSelector((state) => state.selectedCategory);
+  const category = useSelector((state: State) => state.selectedCategory);
 
-  const [filteredStock, setFilteredStock] = useState([]);
+  const [filteredStock, setFilteredStock] = useState<Stock[]>([]);
   useEffect(() => {
     if (baseCategories.includes(category)) {
       setFilteredStock(getItemByBrand(category));

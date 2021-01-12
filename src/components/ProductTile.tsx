@@ -28,9 +28,18 @@ const StyledButton = styled.button`
   margin-top: 15px;
 `;
 
-function ProductTile({ product }) {
+interface ProductProps {
+  displayName: string;
+  price: number;
+}
+
+interface Props {
+  product: ProductProps;
+}
+
+function ProductTile({ product }: Props) {
   const dispatch = useDispatch();
-  const addToBasket = (item, price) => {
+  const addToBasket = (item: string, price: number) => {
     dispatch(addToBasketAction(item, price));
   };
 
