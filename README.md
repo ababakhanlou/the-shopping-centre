@@ -1,4 +1,4 @@
-Deployed on netlify: reverent-noether-3938d4.netlify.app/#/ 
+Deployed on Netlify: reverent-noether-3938d4.netlify.app/#/ 
 
 A functional based React application using TypeScript and making use of Hooks that is replicating an e-commerce website. 
 It has functionality to add items to a basket, search items and a review basket page. 
